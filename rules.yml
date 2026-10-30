@@ -1,0 +1,6 @@
+groups:
+  - name: node_rules
+    interval: 15s
+    rules:
+      - record: instance:cpu_usage:percent
+        expr: 100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
